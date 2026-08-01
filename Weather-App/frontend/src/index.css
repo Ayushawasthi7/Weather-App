@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "leaflet/dist/leaflet.css";
+@import "tailwindcss";
+
+/* Google Font: Outfit & Plus Jakarta Sans */
+
+:root {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  color-scheme: dark light;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background-color: #030712;
+}
+
+/* Custom Scrollbar for sleek UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.05);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Custom glassmorphism utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel-dark {
+  background: rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Leaflet map styles custom */
+.leaflet-container {
+  background-color: #0f172a !important;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.leaflet-bar {
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+}
+
+.leaflet-bar a {
+  background-color: rgba(17, 24, 39, 0.8) !important;
+  color: #f3f4f6 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s;
+}
+
+.leaflet-bar a:hover {
+  background-color: rgba(31, 41, 55, 0.9) !important;
+  color: #ffffff !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(17, 24, 39, 0.9) !important;
+  backdrop-filter: blur(12px) !important;
+  color: #f3f4f6 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(17, 24, 39, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Custom Weather Animations */
+@keyframes sunPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+.animate-sun-glow {
+  animation: sunPulse 8s ease-in-out infinite;
+}
+
+@keyframes cloudDrift {
+  0% { transform: translate(-5%, -5%) scale(1); }
+  50% { transform: translate(5%, 5%) scale(1.05); }
+  100% { transform: translate(-5%, -5%) scale(1); }
+}
+
+.animate-cloud-drift {
+  animation: cloudDrift 45s ease-in-out infinite;
+}
+
+@keyframes lightning {
+  0%, 95%, 98%, 100% { opacity: 0; }
+  96%, 97% { opacity: 0.45; }
+}
+
+.animate-lightning-flash {
+  animation: lightning 6s ease-in-out infinite;
+}
+
+/* Falling droplets and snowflakes */
+@keyframes rainFall {
+  0% { transform: translateY(-10vh) translateX(0); }
+  100% { transform: translateY(110vh) translateX(10px); }
+}
+
+.drop-item {
+  position: absolute;
+  background: linear-gradient(transparent, rgba(147, 197, 253, 0.4));
+  width: 1px;
+  height: 60px;
+  animation: rainFall 1.2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes snowDrift {
+  0% { transform: translateY(-10vh) translateX(0) rotate(0deg); }
+  50% { transform: translateY(50vh) translateX(25px) rotate(180deg); }
+  100% { transform: translateY(110vh) translateX(-10px) rotate(360deg); }
+}
+
+.snow-item {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  animation: snowDrift 6s linear infinite;
+  pointer-events: none;
+}
