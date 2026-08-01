@@ -141,26 +141,26 @@ export const SearchBar = ({
             }}
             onFocus={() => setShowDropdown(true)}
             placeholder={getTranslation(lang, 'searchPlaceholder')}
-            className="w-full h-12 pl-12 pr-24 rounded-2xl glass-panel text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/50 border border-white/10 transition-all text-sm sm:text-base"
+            className="w-full h-14 pl-12 pr-24 rounded-2xl glass-panel text-white placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-sky-500/30 focus:border-sky-400/50 hover:bg-white/[0.08] transition-all text-base sm:text-lg shadow-lg"
           />
-          <Search className="absolute left-4 top-3.5 w-5 h-5 text-slate-400" />
+          <Search className="absolute left-4 top-4 w-5 h-5 sm:w-6 sm:h-6 text-slate-400" />
 
-          <div className="absolute right-3 top-2 flex items-center gap-1.5">
+          <div className="absolute right-3 top-2.5 flex items-center gap-1.5">
             {/* Voice Search Button */}
             <button
               onClick={handleVoiceSearch}
-              className={`p-1.5 rounded-xl transition-all ${isListening ? 'bg-rose-500/30 text-rose-400 animate-pulse' : 'text-slate-400 hover:text-white hover:bg-white/10'}`}
+              className={`p-2 rounded-xl transition-all hover:scale-110 active:scale-95 ${isListening ? 'bg-rose-500/30 text-rose-400 animate-pulse' : 'text-slate-400 hover:text-white hover:bg-white/10'}`}
               title={getTranslation(lang, 'voiceSearchActive')}
             >
-              <Mic className="w-5 h-5" />
+              <Mic className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             {/* GPS Locate button */}
             <button
               onClick={handleGPSLocation}
-              className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-all"
+              className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-all hover:scale-110 active:scale-95"
               title={getTranslation(lang, 'locateMe')}
             >
-              <MapPin className="w-5 h-5" />
+              <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </div>
         </div>
@@ -169,18 +169,18 @@ export const SearchBar = ({
         {currentCity && (
           <button
             onClick={() => onToggleFavorite(currentCity)}
-            className={`h-12 w-12 flex items-center justify-center rounded-2xl border transition-all ${isFavorite ? 'bg-amber-500/20 border-amber-400/30 text-amber-300' : 'glass-panel border-white/10 text-slate-400 hover:text-white'}`}
+            className={`h-14 w-14 flex shrink-0 items-center justify-center rounded-2xl border transition-all hover:scale-105 active:scale-95 ${isFavorite ? 'bg-amber-500/20 border-amber-400/30 text-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.2)]' : 'glass-panel border-white/10 text-slate-400 hover:text-white hover:bg-white/10 shadow-lg'}`}
             title={getTranslation(lang, 'favorites')}
           >
-            <Star className={`w-5.5 h-5.5 ${isFavorite ? 'fill-amber-300' : ''}`} />
+            <Star className={`w-6 h-6 ${isFavorite ? 'fill-amber-300' : ''}`} />
           </button>
         )}
 
         {/* Autocomplete Dropdown */}
         {showDropdown && (suggestions.length > 0 || isSearching) && (
-          <div className="absolute top-14 left-0 right-0 z-50 glass-panel-dark border border-white/10 rounded-2xl p-2 max-h-60 overflow-y-auto shadow-2xl">
+          <div className="absolute top-16 left-0 right-0 z-50 glass-panel border border-white/10 rounded-2xl p-2 max-h-[50vh] overflow-y-auto shadow-[0_20px_50px_rgba(0,0,0,0.5)] scrollbar-hide">
             {isSearching ? (
-              <div className="p-3 text-slate-400 text-sm animate-pulse text-center">
+              <div className="p-4 text-slate-400 text-sm animate-pulse text-center font-medium">
                 {lang === 'hi' ? 'खोज रहे हैं...' : 'Searching...'}
               </div>
             ) : (
@@ -188,13 +188,14 @@ export const SearchBar = ({
                 <button
                   key={idx}
                   onClick={() => handleSelect(item)}
-                  className="w-full text-left px-4 py-2.5 rounded-xl hover:bg-white/10 text-white text-sm sm:text-base transition-colors flex items-center justify-between"
+                  className="w-full text-left px-4 py-3 rounded-xl hover:bg-white/[0.08] text-white text-base transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-1 group"
                 >
-                  <span>
-                    <span className="font-medium">{item.name}</span>
-                    {item.admin1 && <span className="text-slate-400 text-xs sm:text-sm">, {item.admin1}</span>}
+                  <span className="truncate pr-4 flex-1">
+                    <span className="font-semibold text-sky-100 group-hover:text-white transition-colors">{item.name}</span>
+                    {item.admin1 && <span className="text-slate-400 text-sm hidden sm:inline-block">, {item.admin1}</span>}
+                    {item.admin1 && <span className="text-slate-400 text-xs block sm:hidden">{item.admin1}</span>}
                   </span>
-                  <span className="text-slate-400 text-xs bg-white/5 px-2 py-0.5 rounded-md">
+                  <span className="text-slate-400 text-xs bg-white/5 border border-white/5 px-2.5 py-1 rounded-lg shrink-0 self-start sm:self-center">
                     {item.country}
                   </span>
                 </button>

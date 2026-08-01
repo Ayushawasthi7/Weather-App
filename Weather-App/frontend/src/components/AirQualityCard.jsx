@@ -72,13 +72,13 @@ export const AirQualityCard = ({ aqiData, lang }) => {
 
   return (
     <div className="glass-panel rounded-3xl p-6 border border-white/5 flex flex-col md:flex-row gap-6 items-center">
-      
+
       {/* Circular Gauge */}
       <div className="flex flex-col items-center gap-2.5">
         <h3 className="text-slate-300 font-semibold text-sm sm:text-base tracking-wide flex items-center gap-1.5 self-start md:self-auto">
           {getTranslation(lang, 'aqi')}
         </h3>
-        
+
         <div className="relative flex items-center justify-center mt-2">
           {/* Gauge SVG */}
           <svg height={radius * 2} width={radius * 2} className="transform -rotate-90">
@@ -130,62 +130,62 @@ export const AirQualityCard = ({ aqiData, lang }) => {
         {/* Pollutants Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5 mt-2">
           {/* PM2.5 */}
-          <div className="bg-white/5 border border-white/5 rounded-2xl p-3 flex flex-col justify-between">
-            <span className="text-[11px] text-slate-400 font-bold block">{getTranslation(lang, 'pm25')}</span>
-            <div className="flex items-baseline gap-1 mt-1.5">
-              <span className="text-base font-extrabold text-white">{pm25.toFixed(1)}</span>
-              <span className="text-[9px] text-slate-500 font-medium">µg/m³</span>
+          <div className="bg-white/5 border border-white/5 rounded-2xl p-3 flex flex-col justify-between min-h-[90px]">
+            <span className="text-[10px] sm:text-[11px] text-slate-400 font-bold block leading-tight">{getTranslation(lang, 'pm25')}</span>
+            <div className="flex flex-wrap items-baseline gap-1 mt-1.5">
+              <span className="text-sm sm:text-base font-extrabold text-white">{pm25.toFixed(1)}</span>
+              <span className="text-[8px] sm:text-[9px] text-slate-500 font-medium whitespace-nowrap">µg/m³</span>
             </div>
             {/* Small status line */}
-            <div className="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden">
+            <div className="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden shrink-0">
               <div className={`h-full rounded-full ${pm25 <= 12 ? 'bg-emerald-400' : pm25 <= 35.4 ? 'bg-yellow-400' : 'bg-red-400'}`} style={{ width: `${Math.min((pm25 / 75) * 100, 100)}%` }} />
             </div>
           </div>
 
           {/* PM10 */}
-          <div className="bg-white/5 border border-white/5 rounded-2xl p-3 flex flex-col justify-between">
-            <span className="text-[11px] text-slate-400 font-bold block">{getTranslation(lang, 'pm10')}</span>
-            <div className="flex items-baseline gap-1 mt-1.5">
-              <span className="text-base font-extrabold text-white">{pm10.toFixed(1)}</span>
-              <span className="text-[9px] text-slate-500 font-medium">µg/m³</span>
+          <div className="bg-white/5 border border-white/5 rounded-2xl p-3 flex flex-col justify-between min-h-[90px]">
+            <span className="text-[10px] sm:text-[11px] text-slate-400 font-bold block leading-tight">{getTranslation(lang, 'pm10')}</span>
+            <div className="flex flex-wrap items-baseline gap-1 mt-1.5">
+              <span className="text-sm sm:text-base font-extrabold text-white">{pm10.toFixed(1)}</span>
+              <span className="text-[8px] sm:text-[9px] text-slate-500 font-medium whitespace-nowrap">µg/m³</span>
             </div>
-            <div className="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden">
+            <div className="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden shrink-0">
               <div className={`h-full rounded-full ${pm10 <= 54 ? 'bg-emerald-400' : pm10 <= 154 ? 'bg-yellow-400' : 'bg-red-400'}`} style={{ width: `${Math.min((pm10 / 250) * 100, 100)}%` }} />
             </div>
           </div>
 
           {/* CO */}
-          <div className="bg-white/5 border border-white/5 rounded-2xl p-3 flex flex-col justify-between">
-            <span className="text-[11px] text-slate-400 font-bold block">{getTranslation(lang, 'co')}</span>
-            <div className="flex items-baseline gap-1 mt-1.5">
-              <span className="text-base font-extrabold text-white">{(co / 1000).toFixed(2)}</span>
-              <span className="text-[9px] text-slate-500 font-medium">mg/m³</span>
+          <div className="bg-white/5 border border-white/5 rounded-2xl p-3 flex flex-col justify-between min-h-[90px]">
+            <span className="text-[10px] sm:text-[11px] text-slate-400 font-bold block leading-tight">{getTranslation(lang, 'co')}</span>
+            <div className="flex flex-wrap items-baseline gap-1 mt-1.5">
+              <span className="text-sm sm:text-base font-extrabold text-white">{(co / 1000).toFixed(2)}</span>
+              <span className="text-[8px] sm:text-[9px] text-slate-500 font-medium whitespace-nowrap">mg/m³</span>
             </div>
-            <div className="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden">
+            <div className="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden shrink-0">
               <div className={`h-full rounded-full ${co <= 4400 ? 'bg-emerald-400' : co <= 9400 ? 'bg-yellow-400' : 'bg-red-400'}`} style={{ width: `${Math.min((co / 15000) * 100, 100)}%` }} />
             </div>
           </div>
 
           {/* NO2 */}
-          <div className="bg-white/5 border border-white/5 rounded-2xl p-3 flex flex-col justify-between">
-            <span className="text-[11px] text-slate-400 font-bold block">{getTranslation(lang, 'no2')}</span>
-            <div className="flex items-baseline gap-1 mt-1.5">
-              <span className="text-base font-extrabold text-white">{no2.toFixed(1)}</span>
-              <span className="text-[9px] text-slate-500 font-medium">µg/m³</span>
+          <div className="bg-white/5 border border-white/5 rounded-2xl p-3 flex flex-col justify-between min-h-[90px]">
+            <span className="text-[10px] sm:text-[11px] text-slate-400 font-bold block leading-tight">{getTranslation(lang, 'no2')}</span>
+            <div className="flex flex-wrap items-baseline gap-1 mt-1.5">
+              <span className="text-sm sm:text-base font-extrabold text-white">{no2.toFixed(1)}</span>
+              <span className="text-[8px] sm:text-[9px] text-slate-500 font-medium whitespace-nowrap">µg/m³</span>
             </div>
-            <div className="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden">
+            <div className="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden shrink-0">
               <div className={`h-full rounded-full ${no2 <= 53 ? 'bg-emerald-400' : no2 <= 100 ? 'bg-yellow-400' : 'bg-red-400'}`} style={{ width: `${Math.min((no2 / 200) * 100, 100)}%` }} />
             </div>
           </div>
 
           {/* O3 */}
-          <div className="bg-white/5 border border-white/5 rounded-2xl p-3 flex flex-col justify-between col-span-2 sm:col-span-1">
-            <span className="text-[11px] text-slate-400 font-bold block">{getTranslation(lang, 'o3')}</span>
-            <div className="flex items-baseline gap-1 mt-1.5">
-              <span className="text-base font-extrabold text-white">{o3.toFixed(1)}</span>
-              <span className="text-[9px] text-slate-500 font-medium">µg/m³</span>
+          <div className="bg-white/5 border border-white/5 rounded-2xl p-3 flex flex-col justify-between col-span-2 sm:col-span-1 min-h-[90px]">
+            <span className="text-[10px] sm:text-[11px] text-slate-400 font-bold block leading-tight">{getTranslation(lang, 'o3')}</span>
+            <div className="flex flex-wrap items-baseline gap-1 mt-1.5">
+              <span className="text-sm sm:text-base font-extrabold text-white">{o3.toFixed(1)}</span>
+              <span className="text-[8px] sm:text-[9px] text-slate-500 font-medium whitespace-nowrap">µg/m³</span>
             </div>
-            <div className="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden">
+            <div className="w-full bg-white/10 h-1 rounded-full mt-2 overflow-hidden shrink-0">
               <div className={`h-full rounded-full ${o3 <= 54 ? 'bg-emerald-400' : o3 <= 70 ? 'bg-yellow-400' : 'bg-red-400'}`} style={{ width: `${Math.min((o3 / 120) * 100, 100)}%` }} />
             </div>
           </div>

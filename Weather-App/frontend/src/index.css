@@ -19,19 +19,35 @@ body {
 }
 
 /* Custom Scrollbar for sleek UI */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.3) rgba(15, 23, 42, 0.05);
+}
+
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
+
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.05);
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.3);
+  background: rgba(15, 23, 42, 0.02);
   border-radius: 9999px;
 }
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.5);
+  background: rgba(148, 163, 184, 0.6);
+}
+
+/* Touch action optimizations */
+html {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Custom glassmorphism utilities */
@@ -92,10 +108,13 @@ body {
 
 /* Custom Weather Animations */
 @keyframes sunPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.8;
   }
+
   50% {
     transform: scale(1.15);
     opacity: 1;
@@ -107,9 +126,17 @@ body {
 }
 
 @keyframes cloudDrift {
-  0% { transform: translate(-5%, -5%) scale(1); }
-  50% { transform: translate(5%, 5%) scale(1.05); }
-  100% { transform: translate(-5%, -5%) scale(1); }
+  0% {
+    transform: translate(-5%, -5%) scale(1);
+  }
+
+  50% {
+    transform: translate(5%, 5%) scale(1.05);
+  }
+
+  100% {
+    transform: translate(-5%, -5%) scale(1);
+  }
 }
 
 .animate-cloud-drift {
@@ -117,8 +144,18 @@ body {
 }
 
 @keyframes lightning {
-  0%, 95%, 98%, 100% { opacity: 0; }
-  96%, 97% { opacity: 0.45; }
+
+  0%,
+  95%,
+  98%,
+  100% {
+    opacity: 0;
+  }
+
+  96%,
+  97% {
+    opacity: 0.45;
+  }
 }
 
 .animate-lightning-flash {
@@ -127,8 +164,13 @@ body {
 
 /* Falling droplets and snowflakes */
 @keyframes rainFall {
-  0% { transform: translateY(-10vh) translateX(0); }
-  100% { transform: translateY(110vh) translateX(10px); }
+  0% {
+    transform: translateY(-10vh) translateX(0);
+  }
+
+  100% {
+    transform: translateY(110vh) translateX(10px);
+  }
 }
 
 .drop-item {
@@ -141,9 +183,17 @@ body {
 }
 
 @keyframes snowDrift {
-  0% { transform: translateY(-10vh) translateX(0) rotate(0deg); }
-  50% { transform: translateY(50vh) translateX(25px) rotate(180deg); }
-  100% { transform: translateY(110vh) translateX(-10px) rotate(360deg); }
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(50vh) translateX(25px) rotate(180deg);
+  }
+
+  100% {
+    transform: translateY(110vh) translateX(-10px) rotate(360deg);
+  }
 }
 
 .snow-item {

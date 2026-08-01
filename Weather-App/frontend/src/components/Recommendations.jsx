@@ -93,39 +93,39 @@ export const Recommendations = ({ currentData, lang }) => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
         {/* Clothing Card */}
         <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col gap-3 hover:bg-white/10 hover:border-white/20 transition-all">
-          <div className="flex items-center gap-2.5 text-amber-300">
-            <div className="p-2 rounded-xl bg-amber-500/10 border border-amber-400/20">
+          <div className="flex items-start sm:items-center gap-3 text-amber-300">
+            <div className="p-2 rounded-xl bg-amber-500/10 border border-amber-400/20 shrink-0">
               <Shirt className="w-5 h-5" />
             </div>
-            <h4 className="text-sm font-bold text-white">{getTranslation(lang, 'clothing')}</h4>
+            <h4 className="text-sm font-bold text-white leading-tight break-words">{getTranslation(lang, 'clothing')}</h4>
           </div>
-          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium mt-1">
             {advice.clothing}
           </p>
         </div>
 
         {/* Travel Card */}
         <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col gap-3 hover:bg-white/10 hover:border-white/20 transition-all">
-          <div className="flex items-center gap-2.5 text-sky-300">
-            <div className="p-2 rounded-xl bg-sky-500/10 border border-sky-400/20">
+          <div className="flex items-start sm:items-center gap-3 text-sky-300">
+            <div className="p-2 rounded-xl bg-sky-500/10 border border-sky-400/20 shrink-0">
               <Plane className="w-5 h-5" />
             </div>
-            <h4 className="text-sm font-bold text-white">{getTranslation(lang, 'travel')}</h4>
+            <h4 className="text-sm font-bold text-white leading-tight break-words">{getTranslation(lang, 'travel')}</h4>
           </div>
-          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium mt-1">
             {advice.travel}
           </p>
         </div>
 
         {/* Farming Card */}
         <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col gap-3 hover:bg-white/10 hover:border-white/20 transition-all">
-          <div className="flex items-center gap-2.5 text-emerald-300">
-            <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-400/20">
+          <div className="flex items-start sm:items-center gap-3 text-emerald-300">
+            <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-400/20 shrink-0">
               <Leaf className="w-5 h-5" />
             </div>
-            <h4 className="text-sm font-bold text-white">{getTranslation(lang, 'farming')}</h4>
+            <h4 className="text-sm font-bold text-white leading-tight break-words">{getTranslation(lang, 'farming')}</h4>
           </div>
-          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium mt-1">
             {advice.farming}
           </p>
         </div>

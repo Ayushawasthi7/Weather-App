@@ -32,18 +32,18 @@ export default function App() {
   const [tempUnit, setTempUnit] = useState(() => localStorage.getItem('aerosky_temp_unit') || '°C');
   const [windUnit, setWindUnit] = useState(() => localStorage.getItem('aerosky_wind_unit') || 'km/h');
   const [pressureUnit, setPressureUnit] = useState(() => localStorage.getItem('aerosky_pressure_unit') || 'hPa');
-  
+
   // Search & Navigation States
   const [currentCity, setCurrentCity] = useState(() => {
     const saved = localStorage.getItem('aerosky_current_city');
     return saved ? JSON.parse(saved) : DEFAULT_CITY;
   });
-  
+
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem('aerosky_favs');
     return saved ? JSON.parse(saved) : [];
   });
-  
+
   const [recentSearches, setRecentSearches] = useState(() => {
     const saved = localStorage.getItem('aerosky_recent');
     return saved ? JSON.parse(saved) : [];
@@ -137,12 +137,12 @@ export default function App() {
       <WeatherBackground code={weatherData?.current?.weatherCode ?? 0} />
 
       {/* Top App Header & Controls */}
-      <header className="w-full flex items-center justify-between gap-4 pb-6 border-b border-white/5 mb-6 z-10">
-        <div>
-          <h1 className="text-xl sm:text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-indigo-400 tracking-tight leading-none">
+      <header className="w-full flex items-center justify-between gap-4 pb-6 border-b border-white/5 mb-6 md:mb-8 z-10 mt-2">
+        <div className="group cursor-default">
+          <h1 className="text-2xl sm:text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 tracking-tight leading-none group-hover:from-sky-300 group-hover:to-purple-300 transition-all duration-500">
             {getTranslation(lang, 'title')}
           </h1>
-          <p className="text-[10px] sm:text-xs text-slate-400 font-bold tracking-widest uppercase mt-1">
+          <p className="text-[10px] sm:text-xs text-slate-400 font-bold tracking-widest uppercase mt-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
             {lang === 'hi' ? 'स्मार्ट और इमर्सिव' : 'Interactive Portals Engine'}
           </p>
         </div>
@@ -152,20 +152,20 @@ export default function App() {
           {weatherData && (
             <button
               onClick={handleSpeakToggle}
-              className={`p-2.5 rounded-xl border transition-all ${isSpeaking ? 'bg-rose-500/25 border-rose-400/30 text-rose-300 animate-pulse' : 'glass-panel border-white/10 text-slate-400 hover:text-white hover:bg-white/10'}`}
+              className={`p-2.5 rounded-xl border transition-all hover:scale-110 active:scale-95 shadow-sm ${isSpeaking ? 'bg-rose-500/25 border-rose-400/30 text-rose-300 shadow-[0_0_15px_rgba(243,24,103,0.3)] animate-pulse' : 'glass-panel border-white/10 text-slate-400 hover:text-white hover:bg-white/10 hover:shadow-lg'}`}
               title={getTranslation(lang, 'toggleTextToSpeech')}
             >
-              {isSpeaking ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+              {isSpeaking ? <VolumeX className="w-5 h-5 sm:w-6 sm:h-6" /> : <Volume2 className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           )}
 
           {/* Settings Trigger Gear */}
           <button
             onClick={() => setIsSettingsOpen(true)}
-            className="p-2.5 rounded-xl glass-panel border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all"
+            className="p-2.5 rounded-xl glass-panel border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all hover:scale-110 active:scale-95 shadow-sm hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-white/20"
             title="Settings Drawer"
           >
-            <Settings className="w-5 h-5" />
+            <Settings className="w-5 h-5 sm:w-6 sm:h-6 hover:rotate-90 transition-transform duration-500" />
           </button>
         </div>
       </header>
@@ -223,17 +223,17 @@ export default function App() {
         ) : weatherData ? (
           /* ACTUAL LOADED DASHBOARD VIEW */
           <div className="w-full flex flex-col gap-6">
-            
-            {/* Top Section: Main Temperature Card + Air Quality Index */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              
-              {/* Primary Weather Widget */}
-              <div className="lg:col-span-2 glass-panel rounded-3xl p-6 border border-white/5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 relative overflow-hidden bg-gradient-to-br from-white/[0.02] to-transparent">
-                
-                {/* Visual Glow behind card */}
-                <div className="absolute -right-20 -bottom-20 w-60 h-60 rounded-full bg-white/[0.01] blur-2xl pointer-events-none" />
 
-                <div className="flex flex-col h-full justify-between gap-4 z-10">
+            {/* Top Section: Main Temperature Card + Air Quality Index */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+
+              {/* Primary Weather Widget */}
+              <div className="lg:col-span-2 glass-panel rounded-3xl p-6 sm:p-8 border border-white/5 hover:border-white/10 transition-all duration-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8 relative overflow-hidden bg-gradient-to-br from-white/[0.03] to-transparent hover:shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+
+                {/* Visual Glow behind card */}
+                <div className="absolute -right-20 -bottom-20 w-60 h-60 rounded-full bg-sky-500/10 blur-3xl pointer-events-none transition-all duration-700 ease-in-out group-hover:scale-110" />
+
+                <div className="flex flex-col h-full justify-between gap-5 z-10">
                   <div>
                     {/* City details */}
                     <div className="flex items-baseline gap-2">
@@ -274,7 +274,7 @@ export default function App() {
                   <div className="p-5 rounded-3xl bg-white/5 border border-white/5 shadow-inner">
                     {getWeatherIcon(weatherData.current.weatherCode, "w-16 h-16 sm:w-20 sm:h-20")}
                   </div>
-                  
+
                   {/* Feels Like & High/Min */}
                   <div className="text-center sm:text-right">
                     <p className="text-xs sm:text-sm text-slate-400 font-medium">
@@ -340,7 +340,7 @@ export default function App() {
 
             {/* Bottom Grid: Metrics Cards, Alerts, Recommendations */}
             <section className="w-full flex flex-col gap-6">
-              
+
               {/* Detailed Metrics Panel */}
               <WeatherMetrics
                 data={weatherData.current}
