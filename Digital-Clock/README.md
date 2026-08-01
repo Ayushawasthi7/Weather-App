@@ -59,25 +59,52 @@ Digital-Clock/
 ├── .gitignore
 ├── LICENSE
 ├── README.md
-├── index.html
-├── style.css
-├── script.js
-└── assets/
-    ├── icons/
-    ├── fonts/
-    ├── sounds/
-    └── screenshots/
+├── backend/
+│   ├── package.json
+│   └── index.js
+└── frontend/
+    ├── package.json
+    ├── index.html
+    ├── style.css
+    ├── script.js
+    └── assets/
 ```
 
 ---
 
 ## Installation & Running
 
-Since Dig-clock is a self-contained frontend application with no external build processes, you can launch it instantly:
+The project is split into a frontend and a backend, both using Node.js for dependency management and local development.
 
-1. **Clone/Download** the repository folder.
-2. **Open** `index.html` directly in any modern web browser (Google Chrome, Microsoft Edge, Safari, Mozilla Firefox).
-3. **Alternatively**, serve locally using a static server (e.g. VS Code Live Server, `npx serve`, etc.).
+### Backend
+
+1. Navigate to the backend folder:
+   ```bash
+   cd backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the Express server (uses nodemon):
+   ```bash
+   npm run dev
+   ```
+
+### Frontend
+
+1. Navigate to the frontend folder:
+   ```bash
+   cd frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the Vite development server:
+   ```bash
+   npm run dev
+   ```
 
 ---
 
